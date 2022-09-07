@@ -1,0 +1,63 @@
+{
+    "app-id": "com.hwcgames.snald",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "21.08",
+    "base": "org.godotengine.godot.BaseApp",
+    "base-version": "3.4",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "/app/bin/entry.sh",
+    "modules": [
+        {
+            "name": "SNALD",
+            "buildsystem": "simple",
+            "build-commands": [
+                "mv entry.sh /app/bin",
+                "chmod +x /app/bin/entry.sh",
+                "mv Godot_v3.4.1-stable_linux_headless.64 godot",
+                "mv Godot_v3.4.1-stable_export_templates.tpz export-templates.zip",
+                "unzip export-templates.zip",
+                "mkdir -p home/.local/share/godot/templates/3.4.1.stable/",
+                "touch templates/.gdignore home/.gdignore",
+                "cp templates/linux_x11_64_release home/.local/share/godot/templates/3.4.1.stable/",
+                "bash -c 'PATH=$PATH:$(pwd) HOME=$(realpath home) ./build.sh'",
+                "install -D build/Linux/snald.pck /app/bin/godot-runner.pck",
+                "cp -r ./build/Linux/*.so ./build/Linux/maps /app/bin/",
+                "install -D LICENSE /app/bin/LICENSE.txt",
+                "install -D ATTRIBUTION /app/bin/ATTRIBUTION.txt",
+                "install -D icon.png /app/share/icons/hicolor/64x64/apps/com.hwcgames.snald.png",
+                "install -D ./com.hwcgames.snald.desktop /app/share/applications/com.hwcgames.snald.desktop"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/hwcgames/snald/archive/refs/tags/0.0.20.zip",
+                    "sha256": "67e689829e91314973130dde8e6923a963104e453996b78e5ed4ce2b6baa3812"
+                },
+                {
+                    "type": "archive",
+                    "url": "https://downloads.tuxfamily.org/godotengine/3.4.1/Godot_v3.4.1-stable_linux_headless.64.zip",
+                    "sha256": "4ed45b89344cd226380ab4db9bae4a5132174896ef0dcbe691c15d9738f9d9da"
+                },
+                {
+                    "type": "file",
+                    "url": "https://downloads.tuxfamily.org/godotengine/3.4.1/Godot_v3.4.1-stable_export_templates.tpz",
+                    "sha256": "d17e1e869986cbaee8ab5071d1773986b7305d2d1b8f6ffd9df96da98fb5f3cb"
+                },
+                {
+                    "type": "file",
+                    "path": "./com.hwcgames.snald.desktop"
+                },
+                {
+                    "type": "file",
+                    "path": "entry.sh"
+                }
+            ]
+        }
+    ],
+    "finish-args": [
+        "--share=ipc",
+        "--socket=x11",
+        "--socket=pulseaudio",
+        "--device=dri"
+    ]
+}

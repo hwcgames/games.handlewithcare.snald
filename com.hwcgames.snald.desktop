@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=SNALD
+GenericName=Spooky Door-Controllin' Vent-Patrollin' Game
+Exec=/app/bin/entry.sh
+Icon=com.hwcgames.snald
+Type=Application
+Categories=Game
