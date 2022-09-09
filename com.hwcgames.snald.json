@@ -30,8 +30,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/hwcgames/snald/archive/refs/tags/0.0.20.zip",
-                    "sha256": "67e689829e91314973130dde8e6923a963104e453996b78e5ed4ce2b6baa3812"
+                    "url": "https://github.com/hwcgames/snald/archive/refs/tags/0.0.21.zip",
+                    "sha256": "42992e61b5b04e1e4bb262b39b0a5e82f8beaeb39342fa91b7be607cebeaeabd"
                 },
                 {
                     "type": "archive",
