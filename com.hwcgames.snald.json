@@ -19,9 +19,9 @@
                 "mkdir -p home/.local/share/godot/templates/3.4.1.stable/",
                 "touch templates/.gdignore home/.gdignore",
                 "cp templates/linux_x11_64_release home/.local/share/godot/templates/3.4.1.stable/",
-                "bash -c 'PATH=$PATH:$(pwd) HOME=$(realpath home) ./build.sh'",
-                "install -D build/Linux/snald.pck /app/bin/godot-runner.pck",
-                "cp -r ./build/Linux/*.so ./build/Linux/maps /app/bin/",
+                "bash -c 'PATH=$PATH:$(pwd) HOME=$(realpath home) SNALD_TARGET=Linux ./build.sh'",
+                "install -D build/*inux/snald.pck /app/bin/godot-runner.pck",
+                "cp -r ./build/*inux/*.so ./build/*inux/maps /app/bin/",
                 "install -D LICENSE /app/bin/LICENSE.txt",
                 "install -D ATTRIBUTION /app/bin/ATTRIBUTION.txt",
                 "install -D icon.png /app/share/icons/hicolor/512x512/apps/com.hwcgames.snald.png",
@@ -30,8 +30,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/hwcgames/snald/archive/refs/tags/0.0.22.zip",
-                    "sha256": "3c928aab18ef7e52d183a427744905ac284c63bb6e5b0e598f78bc00f5066295"
+                    "url": "https://github.com/hwcgames/snald/archive/refs/tags/0.0.23.zip",
+                    "sha256": "0e4ba942a4481ce5ffd3024a20f177d5d59ea0f181f87ed66ea642633c1ec474"
                 },
                 {
                     "type": "archive",
