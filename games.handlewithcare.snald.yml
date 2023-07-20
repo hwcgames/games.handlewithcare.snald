@@ -1,0 +1,44 @@
+app-id: games.handlewithcare.snald
+base: org.godotengine.godot.BaseApp
+base-version: "3.5"
+runtime: org.freedesktop.Platform
+runtime-version: "22.08"
+default-branch: stable
+sdk: org.freedesktop.Sdk
+command: snald
+
+finish-args:
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --device=dri
+  - --socket=pulseaudio
+
+modules:
+  - name: snald
+    buildsystem: simple
+    sources:
+      - type: archive
+        url: https://github.com/hwcgames/snald/releases/download/0.0.24/linux.zip
+        sha256: 06ce207ca3b6eccb183fa63d9853fc427d466a586018cfc9b8c8008c85bdb04c
+        strip-components: 0
+      - type: file
+        url: https://github.com/hwcgames/snald/blob/main/icon.png?raw=true
+        dest-filename: games.handlewithcare.snald.png
+        sha256: 6ce24b2e381a3975f9cc6495adef3678de1e4668441b4a9effe57a465ac15ad9
+      - type: file
+        path: ./games.handlewithcare.snald.desktop
+        sha256: 6e5219beeb9246eee5c83697b31f2ac10cd1cb374328c8ea72beb6b1ef11621a
+      - type: script
+        dest-filename: snald.sh
+        commands:
+          - cd /app/game
+          - /app/bin/godot-runner --main-pack /app/game/snald.pck .
+    build-commands:
+      - ls
+      - mkdir -p /app/game
+      - rm linux/snald.run
+      - mv linux/* /app/game
+      - mv /app/game/*.so /app/lib
+      - install -Dm755 snald.sh /app/bin/snald
+      - install -Dm644 games.handlewithcare.snald.png -t /app/share/icons/hicolor/256x256/apps/
+      - install -Dm644 games.handlewithcare.snald.desktop -t /app/share/applications/
